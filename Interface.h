@@ -55,10 +55,6 @@ class Interface{
 
   void Empty(unsigned const id)const;
 
-  void Finite(unsigned const id)const;
-  
-  void Recognize(unsigned const id, const std::string& word)const;
-
   void Determinisation(unsigned id)const;
 
   void nfaByRegex(const std::string &regex);

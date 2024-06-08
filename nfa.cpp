@@ -3,7 +3,7 @@
 #include"helpingClass.h"
 #include <fstream>
 #include<exception>
-NFA::NFA(unsigned _id,const std::vector<DeltaTransition*>& _transitions){
+NFA::NFA(unsigned _id,const std::vector<DeltaTransition*>& _transitions) {
   id=_id;
    for (int i = 0; i < _transitions.size(); i++)
   {
@@ -263,7 +263,7 @@ if(getFinalStates().empty() || getStartStates().empty())
    } 
    return true;
  }
-
+//NB
 
  std::vector<State*> NFA::TraversalWithChar(const std::vector<State*>&current_states, const char c)
  {
@@ -272,7 +272,7 @@ if(getFinalStates().empty() || getStartStates().empty())
    {
      for (int j = 0; j < transitions.size(); j++)
      {
-        if (*current_states[i]==*transitions[j]->getStart()&&transitions[j]->getLabel()==c)
+        if (*current_states[i]==*transitions[j]->getStart() && transitions[j]->getLabel()==c)
         {
             result.push_back(transitions[j]->getEnd());
         }       
@@ -454,7 +454,7 @@ bool NFA::FindPaths(const State &start,  std::vector<State *> &visitedStates) co
     {
       return true;
     }
-    if (connectedState(start,visitedStates).empty()&&!start.isFinal())
+    if (connectedState(start,visitedStates).empty() &&!start.isFinal())
     {
       return false;
     }
@@ -496,7 +496,7 @@ bool NFA::FindPaths(const State &start,  std::vector<State *> &visitedStates) co
     
     for (DeltaTransition* delta:transitions)
     {
-        if (start==*delta->getStart()&&!ContainsState(*delta->getEnd(),visitedStates))
+        if (start==*delta->getStart() &&!ContainsState(*delta->getEnd(),visitedStates))
         {
             for (State* state:visitedStates)
             {
@@ -536,6 +536,7 @@ bool NFA::FindPaths(const State &start,  std::vector<State *> &visitedStates) co
    const std::vector<State*>startStates=getStartStates();
 
    const std::vector<State*>endStates=getFinalStates();
+   
    bool hasCycle;
 
    for (State* state:startStates)
